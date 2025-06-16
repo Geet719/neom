@@ -1,0 +1,33 @@
+
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+
+
+@font-face {
+    font-family: "IvyMode";
+    src: url("../public/Fonts/IvyMode-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "BrownLight";
+    src: url("../public/Fonts/BrownLight-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Brown";
+    src: url("../public/Fonts/BrownMedium-Regular.ttf") format("truetype");
+}
+
+@layer utilities {
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(22%) sepia(96%) saturate(7464%) hue-rotate(336deg) brightness(92%) contrast(101%);
+        /* Adjust icon color */
+      cursor: pointer;
+    }
+}
+  
+.fixed.opacity-0 {
+    pointer-events: none;
+}
+  
