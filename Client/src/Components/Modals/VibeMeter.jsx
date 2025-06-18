@@ -1,6 +1,6 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
-import FeedbackSpeedometer from "../Speedometer/feedbackSpeedometer";
+import FeedbackSpeedometer from "../Speedometer/FeedbackSpeedometer";
 import over from "../../assets/img/overwhelmed.svg";
 import anger from "../../assets/img/anger.svg";
 import appre from "../../assets/img/appreciation.svg";
