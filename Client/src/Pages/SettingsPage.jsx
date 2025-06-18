@@ -4,7 +4,7 @@ import Header from "../Components/Header/Header";
 import SettingCard from "../Components/SettingComponent/SettingCard";
 import serverData from "../assets/Dummy_Data/serverData";
 
-module.exports function SettingsPage() {
+export default function SettingsPage() {
   const userDetails = useSelector((store) => store.user);
   console.log(userDetails);
 

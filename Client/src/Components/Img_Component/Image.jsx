@@ -5,7 +5,7 @@ import {  handleFavouriteCard, handleRemoveCard } from "../../Features/User/User
 import { useSelector } from "react-redux";
 
 
-module.exports function Image({ value, card3,notify1 ,notify2,notify3}) {
+export default function Image({ value, card3,notify1 ,notify2,notify3}) {
   const navigate=useNavigate();
   
   const favouriteEvents = useSelector((state) => state.user.favouriteEvents);

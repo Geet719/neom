@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatDate, formatEventTime } from "../../util/DateFormatter";
 
-module.exports function GolfMatch({ closeModal, carddata ,cardtime}) {
+export default function GolfMatch({ closeModal, carddata ,cardtime}) {
   const userDetails = useSelector((store) => store.user);
   const { authorized, fullName } = userDetails;
 

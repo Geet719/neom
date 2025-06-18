@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IoMdStar } from "react-icons/io";
 
-module.exports function FeedBackCard({ feed, handleReview }) {
+export default function FeedBackCard({ feed, handleReview }) {
   const userDetails = useSelector((store) => store.user);
   const navigate = useNavigate();
   const { authorized, fullName } = userDetails;

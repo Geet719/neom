@@ -35,7 +35,7 @@ const initialUserState = {
   interests: "",
 };
 
-module.exports function userReducer(state = initialUserState, action) {
+export default function userReducer(state = initialUserState, action) {
   switch (action.type) {
     case "user/data":
       return {

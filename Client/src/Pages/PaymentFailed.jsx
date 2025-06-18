@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 
-module.exports function PaymentFailed() {
+export default function PaymentFailed() {
   const navigate = useNavigate();
   return (
     <>

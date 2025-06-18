@@ -3,7 +3,7 @@ import { IoIosStar } from "react-icons/io";
 import { data, useNavigate } from "react-router-dom";
 import { formatDate } from "../../util/DateFormatter";
 
-module.exports function DashBoardCard4({ card4 }) {
+export default function DashBoardCard4({ card4 }) {
 
 
   const navigate=useNavigate();

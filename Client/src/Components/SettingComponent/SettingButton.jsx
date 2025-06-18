@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaCircle } from "react-icons/fa";
 
-module.exports function SettingButton({ value = null, text }) {
+export default function SettingButton({ value = null, text }) {
   const [select, setSelected] = useState(null);
 
   function handleSelect(value) {

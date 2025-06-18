@@ -5,7 +5,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
 import "../../index.css";
 
-module.exports function RescheduleModal({ notificationRef, handleReschedule, handleCancel2 }) {
+export default function RescheduleModal({ notificationRef, handleReschedule, handleCancel2 }) {
   const [showModal, setShowModal] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [modalOffset, setModalOffset] = useState(0); 

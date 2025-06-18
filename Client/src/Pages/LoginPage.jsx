@@ -5,7 +5,7 @@ import { FcGoogle  } from "react-icons/fc";
 import store from "../../Store";
 import { userlogin } from "../Features/User/UserSlice";
 
-module.exports function LoginPage({ loginHandlebyGoogle }) {
+export default function LoginPage({ loginHandlebyGoogle }) {
 
    const navigate=useNavigate();
 

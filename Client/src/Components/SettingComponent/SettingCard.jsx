@@ -1,6 +1,6 @@
 import SettingButton from "./SettingButton";
 
-module.exports function SettingCard({ data1 }) {
+export default function SettingCard({ data1 }) {
   return (
     <>
       <div

@@ -11,4 +11,4 @@ const DashBoardMain = ({ data, itemsPerView, currentIndex, renderItem }) => {
   );
 };
 
-module.exports DashBoardMain;
+export default DashBoardMain;

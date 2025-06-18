@@ -2,7 +2,7 @@ import { data, useNavigate } from "react-router-dom";
 import { formatDate } from "../../util/DateFormatter";
 
 
-module.exports function ReschedulePrevious({ event, handleClick }) {
+export default function ReschedulePrevious({ event, handleClick }) {
   const navigate=useNavigate();
   console.log(event);
   return (

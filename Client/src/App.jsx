@@ -22,12 +22,11 @@ import PaymentFailed from "./Pages/PaymentFailed";
 import ScrollToTop from "./Components/Scroll/ScrolToTop";
 import ClientForm from "./Pages/ClientForm";
 
-module.exports function App() {
-  
-  const userDetails=useSelector((store)=>store.user);
+function App() {
+  const userDetails = useSelector((store) => store.user);
   console.log(userDetails);
 
-  const {loading,authorized}=userDetails;
+  const { loading, authorized } = userDetails;
 
   function loginHandlebyGoogle() {
     window.location.href = "http://localhost:5000/auth/google";
@@ -36,8 +35,6 @@ module.exports function App() {
   useEffect(() => {
     store.dispatch(getAllUserData());
   }, []);
-
-
 
   return (
     <div
@@ -58,7 +55,7 @@ module.exports function App() {
                 ) : (
                   <DashBoard />
                 )
-              }              
+              }
             />
             <Route path="dashboard" element={<DashBoard />} />
             <Route path="favourites" element={<MyFavrouites />} />
@@ -80,3 +77,4 @@ module.exports function App() {
     </div>
   );
 }
+export default App;

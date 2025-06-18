@@ -1,6 +1,6 @@
 import over from "../../assets/img/overwhelmed.svg";
 import { FaHeart } from "react-icons/fa";
-module.exports function MyFavoritesCard({ favCard }) {
+export default function MyFavoritesCard({ favCard }) {
   return (
     <div className="relative  ">
       <img

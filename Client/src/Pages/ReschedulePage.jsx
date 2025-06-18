@@ -15,7 +15,7 @@ import UpcomingSchedule from "../Components/Reschedule/UpcomingSchedule";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 
-module.exports function ReschedulePage() {
+export default function ReschedulePage() {
   const [golfModal, setGolfModal] = useState(false);
   const [carddata, setCarddata] = useState(null);
   const [cardtime, setCardTime] = useState(null);

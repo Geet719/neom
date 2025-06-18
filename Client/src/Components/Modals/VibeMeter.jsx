@@ -19,7 +19,7 @@ const reactions = [
   { min: -26, max: -30, src: anger, alt: "Segment 6" },
 ];
 
-module.exports function VibeMeter({ closeVibeModal, handleVibeSubmit,txt,totalRating }) {
+export default function VibeMeter({ closeVibeModal, handleVibeSubmit,txt,totalRating }) {
   const userDetails = useSelector((store) => store.user);
   const { authorized, fullName } = userDetails;
 

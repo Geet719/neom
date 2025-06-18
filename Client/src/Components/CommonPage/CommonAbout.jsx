@@ -2,7 +2,7 @@ import { BiCategory } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
 import getEmojiImage from "../../util/emojiFinder";
 
-module.exports function CommonAbout({datadetailedEvent}) {
+ function CommonAbout({datadetailedEvent}) {
 
 
   return (
@@ -91,3 +91,4 @@ module.exports function CommonAbout({datadetailedEvent}) {
 
   );
 }
+export default CommonAbout;

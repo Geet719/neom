@@ -2,7 +2,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-module.exports function ImageGridModal({ closeModal, val }) {
+export default function ImageGridModal({ closeModal, val }) {
   const images = [val, val, val, val];
   return (
     <>

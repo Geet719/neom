@@ -9,7 +9,7 @@ import MyModal from "../Components/Modals/MyModal";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 
-module.exports function FeedBackPage() {
+export default function FeedBackPage() {
 
   const [feebackModal,setFeedbackModal]=useState(false);
   const [cardid,setCardId]=useState(null);

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-module.exports function TimeCircle() {
+export default function TimeCircle() {
   const initialMinutes = 52;
   const initialSeconds = 59;
 

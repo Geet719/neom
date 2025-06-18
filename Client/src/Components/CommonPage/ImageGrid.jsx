@@ -2,7 +2,7 @@ import { useState } from "react";
 import ImageGridModal from "../Modals/ImageGridModal";
 
 
-module.exports function ImageGrid({val,status}) {
+export default function ImageGrid({val,status}) {
 
   const [showall,setShowall]=useState(false);
 

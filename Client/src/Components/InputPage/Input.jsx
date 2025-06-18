@@ -1,4 +1,4 @@
-module.exports function Input({ labelName, typeName, nameType, onChange, previewSrc }) {
+export default function Input({ labelName, typeName, nameType, onChange, previewSrc }) {
   return (
     <div>
       <label className="w-[194px] text-center text-[14px] leading-[30px] tracking-wide text-[#222222] opacity-100">

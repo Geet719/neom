@@ -1,4 +1,4 @@
-module.exports function formatEventDate(startDate, endDate) {
+export default function formatEventDate(startDate, endDate) {
   const options = {
     month: "short",
     day: "numeric",

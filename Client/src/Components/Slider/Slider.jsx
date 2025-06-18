@@ -3,7 +3,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { dataDashBoardCard2 } from "../../assets/Dummy_Data/data";
 import { dataMyFavoritesCard } from "../../assets/Dummy_Data/data";
 
-module.exports function Slider({value,scheduledEvents,goToPrevImage,goToNextImage,goToNextImageCard2,goToPrevImageCard2,currentIndex,currentIndexCard2,itemsPerView,itemsPerViewCard2,currentIndexCard3,itemsPerViewCard3,goToNextImageCard3,goToPrevImageCard3}) {
+export default function Slider({value,scheduledEvents,goToPrevImage,goToNextImage,goToNextImageCard2,goToPrevImageCard2,currentIndex,currentIndexCard2,itemsPerView,itemsPerViewCard2,currentIndexCard3,itemsPerViewCard3,goToNextImageCard3,goToPrevImageCard3}) {
 
   
 

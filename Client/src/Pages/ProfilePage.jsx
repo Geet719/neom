@@ -16,7 +16,7 @@ import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 
 
-module.exports function ProfilePage() {
+export default function ProfilePage() {
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userMobile = useRef(null);

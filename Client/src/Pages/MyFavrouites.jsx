@@ -15,7 +15,7 @@ import MyFavoritesCard from "../Components/MyFavorites/MyFavoritesCard";
 import Slider from "../Components/Slider/Slider";
 
 
-module.exports function MyFavrouites() {
+export default function MyFavrouites() {
    
   const Navigate=useNavigate();
 

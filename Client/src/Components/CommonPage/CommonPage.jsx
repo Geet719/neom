@@ -7,19 +7,18 @@ import CommonAbout from "./CommonAbout";
 import ReserveCard from "./ReserveCard";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 import MyModal from "../Modals/MyModal";
 
-
-module.exports function CommonPage() {
+export default function CommonPage() {
   const [feebackModal, setFeedbackModal] = useState(false);
 
   function handleReview() {
     setFeedbackModal(true);
   }
-  
-  function closeModal(){
+
+  function closeModal() {
     setFeedbackModal(false);
   }
   var mainCommonPageData = null;
@@ -31,7 +30,7 @@ module.exports function CommonPage() {
   const userDetails = useSelector((store) => store.user);
   console.log(userDetails);
 
-  const {authorized,fullName, totalCards } = userDetails;
+  const { authorized, fullName, totalCards } = userDetails;
 
   // // YE SHI KRNA HAI
   // if (value.state.text !== null) {
@@ -46,15 +45,14 @@ module.exports function CommonPage() {
 
   mainCommonPageData = value.state.data;
 
-
   const stars = mainCommonPageData.star_review;
-
 
   return (
     <>
       <section>
         <Header />
-        {mainCommonPageData.status==="Completed" && mainCommonPageData.reviewstatus===false? (
+        {mainCommonPageData.status === "Completed" &&
+        mainCommonPageData.reviewstatus === false ? (
           <div className="flex mt-[20px] items-center justify-between pl-[28px] pr-[15px] py-[20px] w-full border border-[#222222] rounded-[12px]">
             <div className="flex w-[775px] flex-col justify-between">
               <h1
@@ -119,7 +117,7 @@ module.exports function CommonPage() {
             </span>
           </div>
 
-             {/* YHA PR V KAAM KRNA HAI IMAGE GRID MAI */}
+          {/* YHA PR V KAAM KRNA HAI IMAGE GRID MAI */}
           <ImageGrid
             val={mainCommonPageData.image_main}
             status={mainCommonPageData.status}
@@ -127,7 +125,7 @@ module.exports function CommonPage() {
 
           <div className="px-[80px] flex justify-between mt-[25px] ">
             <CommonAbout datadetailedEvent={mainCommonPageData} />
-             {/* REMOVE CHECK AND STATUS K BASIS PR RESERVE VALA SHOW HOGA SCHEDULE AND COMPLETED --> NO RESERVE SEAT, NULL --> RESERVE MY */}
+            {/* REMOVE CHECK AND STATUS K BASIS PR RESERVE VALA SHOW HOGA SCHEDULE AND COMPLETED --> NO RESERVE SEAT, NULL --> RESERVE MY */}
             <ReserveCard datadetailedEvent={mainCommonPageData} />
           </div>
 
@@ -170,7 +168,8 @@ module.exports function CommonPage() {
               style={{ fontFamily: "IvyMode, sans-serif" }}
               className="text-left text-[25px] leading-[44px] tracking-[1.16px] text-[#222222]"
             >
-              Some more recommandation for you, {authorized === true ? fullName : "Charlie"}
+              Some more recommandation for you,{" "}
+              {authorized === true ? fullName : "Charlie"}
             </h1>
 
             <div className="flex flex-col justify-center">
@@ -183,10 +182,11 @@ module.exports function CommonPage() {
           </div>
         </div>
 
-      
         <Footer />
-       
-        {feebackModal && <MyModal detailedData={mainCommonPageData} closeModal={closeModal}/>}
+
+        {feebackModal && (
+          <MyModal detailedData={mainCommonPageData} closeModal={closeModal} />
+        )}
       </section>
     </>
   );

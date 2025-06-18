@@ -1,5 +1,5 @@
 
-module.exports function DashBoardCard2({ card2 ,handleReviewModal}) {
+export default function DashBoardCard2({ card2 ,handleReviewModal}) {
   return (
     <>
       <div className="flex flex-col items-start w-[520px] h-[490px]">

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import formatEventDate from "../../util/DateFormatter";
 import truncateName from "../../util/truncateName";
 
-module.exports function DashBoardCard1({ list }) {
+export default function DashBoardCard1({ list }) {
   const navigate = useNavigate();
 
   const stars = list.star_review;

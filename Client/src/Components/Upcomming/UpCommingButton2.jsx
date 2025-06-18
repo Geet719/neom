@@ -4,7 +4,7 @@ import store from "../../../Store";
 import { eventFilter } from "../../Features/User/UserSlice";
 import { useEffect, useState } from "react";
 
-module.exports function UpcommingButton2() {
+export default function UpcommingButton2() {
   const [date, setDate] = useState(null);
   const [currentCity, setCurrentCity] = useState(null);
   function handlechangeDate(e) {
