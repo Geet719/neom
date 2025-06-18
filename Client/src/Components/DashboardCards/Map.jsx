@@ -67,4 +67,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+module.exports Map;

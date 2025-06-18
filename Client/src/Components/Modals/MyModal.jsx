@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 import { feedbackData, getAllUserData } from "../../Features/User/UserSlice";
 import store from "../../../Store";
 
-export default function MyModal({ detailedData, closeModal, cardid = null }) {
+module.exports function MyModal({ detailedData, closeModal, cardid = null }) {
   var card_id;
   const userfeedback = useRef(null);
   const userDetails = useSelector((store) => store.user);

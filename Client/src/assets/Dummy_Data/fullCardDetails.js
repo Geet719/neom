@@ -236,4 +236,4 @@ const fullCardDetails = [
   },
 ];
 
-export default fullCardDetails;
+module.exports fullCardDetails;

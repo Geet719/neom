@@ -22,7 +22,7 @@ import PaymentFailed from "./Pages/PaymentFailed";
 import ScrollToTop from "./Components/Scroll/ScrolToTop";
 import ClientForm from "./Pages/ClientForm";
 
-export default function App() {
+module.exports function App() {
   
   const userDetails=useSelector((store)=>store.user);
   console.log(userDetails);

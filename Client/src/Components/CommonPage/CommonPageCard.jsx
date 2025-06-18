@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
 
-export default function CommonPageCard() {
+module.exports function CommonPageCard() {
 
   const navigate=useNavigate();
 

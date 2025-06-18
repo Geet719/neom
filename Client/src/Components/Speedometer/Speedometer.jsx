@@ -153,4 +153,4 @@ function Speedometer({
   );
 }
 
-export default Speedometer;
+module.exports Speedometer;

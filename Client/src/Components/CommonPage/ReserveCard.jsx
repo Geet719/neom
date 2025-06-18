@@ -8,7 +8,7 @@ import { formatDate, formatEventTime } from "../../util/DateFormatter";
 import store from "../../../Store";
 import { handleReserve, stripePayment } from "../../Features/User/UserSlice";
 
-export default function ReserveCard({  datadetailedEvent }) {
+module.exports function ReserveCard({  datadetailedEvent }) {
   const userDetails = useSelector((store) => store.user);
   console.log(userDetails);
   const { scheduledEvents } = userDetails;

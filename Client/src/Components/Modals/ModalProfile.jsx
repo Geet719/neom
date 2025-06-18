@@ -6,7 +6,7 @@ const menuItems = [
   { name: "Settings", path: "/settings" },
 ];
 
-export default function ModalProfile() {
+module.exports function ModalProfile() {
   return (
     <ul className="absolute z-50 right-0 mt-2 w-40 bg-white shadow-lg rounded-md p-2 profile-dropdown">
       {menuItems.map((item, index) => (

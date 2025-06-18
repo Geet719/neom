@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-export default function RescheduleNow({ show,handleShow,handleReschedule1,handleCancelEvent }) {
+module.exports function RescheduleNow({ show,handleShow,handleReschedule1,handleCancelEvent }) {
 
   const userDetails=useSelector((store)=>store.user);
   const {authorized,fullName}=userDetails;

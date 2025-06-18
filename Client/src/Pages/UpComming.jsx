@@ -16,7 +16,7 @@ import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 
 
-export default function UpComming() {
+module.exports function UpComming() {
 
 
   const notify1=()=>toast.success("Events added to favourites Events",{

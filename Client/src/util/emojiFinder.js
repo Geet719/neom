@@ -8,7 +8,7 @@ const Images = [
   { name: "over", src: "https://res.cloudinary.com/drcgwjkmj/image/upload/v1740549713/Neom/pacxsafltmvydrwiwqsb.svg", range: [4, 5] },
 ];
 
-export default function getEmojiImage(rating) {
+module.exports function getEmojiImage(rating) {
   const image = Images.find(img => rating > img.range[0] && rating <= img.range[1]);
   return image ? image.src : null;
 }

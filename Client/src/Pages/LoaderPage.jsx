@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import {RingLoader} from "react-spinners"
 
-export default function LoaderPage() {
+module.exports function LoaderPage() {
     
     const userDetails=useSelector((store)=>store.user);
     console.log(userDetails);

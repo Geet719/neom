@@ -7,7 +7,7 @@ import store from "../../Store";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 
-export default function PaymentSuccessful() { 
+module.exports function PaymentSuccessful() { 
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const sessionId = searchParams.get("session_id");

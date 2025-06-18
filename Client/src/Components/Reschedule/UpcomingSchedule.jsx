@@ -3,7 +3,7 @@ import { formatDate, formatEventTime } from "../../util/DateFormatter";
 import { useNavigate } from "react-router-dom";
 
 
-export default function UpcomingSchedule({ event }) {
+module.exports function UpcomingSchedule({ event }) {
   const navigate=useNavigate();
   return (
   

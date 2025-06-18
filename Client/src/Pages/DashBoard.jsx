@@ -16,7 +16,7 @@ import Footer from "../Components/Footer/Footer";
 
 import MyModal from "../Components/Modals/MyModal";
 
-export default function DashBoard() {
+module.exports function DashBoard() {
   const userDetails = useSelector((store) => store.user);
 
   const [feebackModal, setFeedbackModal] = useState(false);

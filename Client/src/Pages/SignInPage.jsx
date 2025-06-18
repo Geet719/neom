@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Input from "../Components/InputPage/Input";
 import { UserSignIn } from "../Features/User/UserSlice";
 
-export default function SignInPage() {
+module.exports function SignInPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

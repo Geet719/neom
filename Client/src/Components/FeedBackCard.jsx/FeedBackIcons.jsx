@@ -8,7 +8,7 @@ const Images = [
   { name: "over", src: "https://res.cloudinary.com/drcgwjkmj/image/upload/v1740549713/Neom/pacxsafltmvydrwiwqsb.svg", range: [4, 5] },
 ];
 
-export default function FeedBackIcons({val}) {
+module.exports function FeedBackIcons({val}) {
   const getURL=getEmojiImage(val);
 
   return (

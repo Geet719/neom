@@ -127,4 +127,4 @@ const serverData = [
   },
 ];
 
-export default serverData;
+module.exports serverData;

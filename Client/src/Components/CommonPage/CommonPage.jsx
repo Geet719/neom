@@ -12,7 +12,7 @@ import { useState } from "react";
 import MyModal from "../Modals/MyModal";
 
 
-export default function CommonPage() {
+module.exports function CommonPage() {
   const [feebackModal, setFeedbackModal] = useState(false);
 
   function handleReview() {

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import store from "../../../Store";
 import { eventFilter} from "../../Features/User/UserSlice";
 
-export default function UpcommingButtons() {
+module.exports function UpcommingButtons() {
 
   const {categoryValue,categoryCheck}=useSelector((store)=>store.user);
   console.log(categoryCheck,categoryValue);

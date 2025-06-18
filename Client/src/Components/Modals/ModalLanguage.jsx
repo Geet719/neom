@@ -1,4 +1,4 @@
-export default function ModalLanguage() {
+module.exports function ModalLanguage() {
   return (
     <ul className="absolute z-50 right-0 mt-5 w-32 bg-white shadow-lg rounded-md p-2 language-dropdown">
       {["English", "French", "Arabic"].map((lang, index) => (

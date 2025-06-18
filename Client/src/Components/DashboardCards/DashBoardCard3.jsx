@@ -6,7 +6,7 @@ import getEmojiImage from "../../util/emojiFinder";
 import truncateName from "../../util/truncateName";
 import Image from "../Img_Component/Image";
 
-export default function DashBoardCard3({
+module.exports function DashBoardCard3({
   card3,
   fav = null,
   up = null,

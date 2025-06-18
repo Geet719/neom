@@ -14,7 +14,7 @@ const stripeRoute=require('./Routes/PaymentRoute/StripeRoute.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const __dirname = path.resolve();
+
 
 // Middleware
 app.use(express.json());

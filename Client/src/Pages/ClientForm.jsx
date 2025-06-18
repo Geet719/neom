@@ -1,7 +1,7 @@
 import { DevTool } from "@hookform/devtools";
 import { useForm } from "react-hook-form";
 
-export default function ClientForm() {
+module.exports function ClientForm() {
   const form = useForm();
   const { register, control, handleSubmit, formState } = form;
   const { errors } = formState;

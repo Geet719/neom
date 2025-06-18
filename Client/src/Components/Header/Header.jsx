@@ -18,7 +18,7 @@ const navItems = [
   { name: "My Favourites", path: "/favourites" },
   { name: "Upcoming events", path: "/events" },
 ];
-export default function Header() {
+module.exports function Header() {
   const [selected, setSelected] = useState(null);
   const [showLanguage, setShowLanguage] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
