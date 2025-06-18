@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
@@ -13,6 +14,7 @@ const stripeRoute=require('./Routes/PaymentRoute/StripeRoute.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const __dirname = path.resolve();
 
 // Middleware
 app.use(express.json());
@@ -28,7 +30,12 @@ app.use('/user',signInRoutes);
 app.use('/user',loginInRoutes);
 app.use('/card',cardRoutes);
 app.use('/payment',stripeRoute);
+app.use(express.static(path.join(__dirname,"../Client/dist")))
 
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "../Client/dist/index.html"));
+});
 
 
 app.listen(PORT, () => {
