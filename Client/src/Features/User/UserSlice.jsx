@@ -137,7 +137,7 @@ export function getAllUserData() {
     dispatch({ type: "user/loading", payload: true });
 
     try {
-      const res = await fetch("https://neom-sgf7.onrender.comverify/user", {
+      const res = await fetch("https://neom-sgf7.onrender.com/verify/user", {
         method: "GET",
         credentials: "include",
       });
@@ -159,7 +159,7 @@ export const handleFavouriteCard = (card) => async (dispatch, getState) => {
   const state = getState();
   const data = { cardId: card.id, userId: state.user.user_id };
   console.log(data);
-  const res = await fetch("https://neom-sgf7.onrender.comcard/fav", {
+  const res = await fetch("https://neom-sgf7.onrender.com/card/fav", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -178,7 +178,7 @@ export const handleRemoveCard = (card) => async (dispatch, getState) => {
   const state = getState();
   const data = { cardId: card.id, userId: state.user.user_id };
   console.log(data);
-  const res = await fetch("https://neom-sgf7.onrender.comcard/remove", {
+  const res = await fetch("https://neom-sgf7.onrender.com/card/remove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -201,7 +201,7 @@ export const handleReserve =
       seat: guestCount,
     };
     console.log(data);
-    const res = await fetch("https://neom-sgf7.onrender.comcard/reserve", {
+    const res = await fetch("https://neom-sgf7.onrender.com/card/reserve", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -220,7 +220,7 @@ export const HandleProfile = (formData) => async (dispatch, getState) => {
     console.log(pair[0], pair[1]);
   }
 
-  const res = await fetch("https://neom-sgf7.onrender.comcard/updateProfile", {
+  const res = await fetch("https://neom-sgf7.onrender.com/card/updateProfile", {
     method: "POST",
     body: formData,
   });
@@ -238,7 +238,7 @@ export const UserSignIn = (formDataToSend) => {
   console.log(formDataToSend);
   return async () => {
     try {
-      const res = await fetch("https://neom-sgf7.onrender.comuser/signIn", {
+      const res = await fetch("https://neom-sgf7.onrender.com/user/signIn", {
         method: "POST",
         body: formDataToSend,
         credentials: "include",
@@ -263,7 +263,7 @@ export const UserSignIn = (formDataToSend) => {
 export const userlogin = (data) => {
   return async () => {
     try {
-      const res = await fetch("https://neom-sgf7.onrender.comuser/loginIn", {
+      const res = await fetch("https://neom-sgf7.onrender.com/user/loginIn", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -308,7 +308,7 @@ export const stripePayment = (id, name, image, amount, seat) => {
       guest: seat,
     };
 
-    const res = await fetch("https://neom-sgf7.onrender.compayment/check", {
+    const res = await fetch("https://neom-sgf7.onrender.com/payment/check", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -346,7 +346,7 @@ export const feedbackData =
       userId: state.user.user_id,
     };
     console.log(data);
-    const res = await fetch("https://neom-sgf7.onrender.comcard/feedback", {
+    const res = await fetch("https://neom-sgf7.onrender.com/card/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -363,7 +363,7 @@ export const cancelEvent = (cardId) => async (dispatch, getState) => {
   const state = getState();
   const userId = state.user.user_id;
   const data = { user_id: userId, card_id: cardId };
-  const res = await fetch("https://neom-sgf7.onrender.comcard/cancel", {
+  const res = await fetch("https://neom-sgf7.onrender.com/card/cancel", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

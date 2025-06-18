@@ -29,7 +29,7 @@ function App() {
   const { loading, authorized } = userDetails;
 
   function loginHandlebyGoogle() {
-    window.location.href = "https://neom-sgf7.onrender.comauth/google";
+    window.location.href = "https://neom-sgf7.onrender.com/auth/google";
   }
 
   useEffect(() => {

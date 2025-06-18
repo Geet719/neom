@@ -20,7 +20,7 @@ export default function PaymentSuccessful() {
     const verifyPayment = async () => {
       try {
         const res = await fetch(
-          "https://neom-sgf7.onrender.compayment/verify",
+          "https://neom-sgf7.onrender.com/payment/verify",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
