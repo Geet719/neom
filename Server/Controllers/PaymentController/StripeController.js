@@ -31,8 +31,8 @@ const StripeController = async (req, res) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "http://localhost:5173/fail",
+      success_url: "https://neom-sgf7.onrender.com/success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: "https://neom-sgf7.onrender.com/fail",
       metadata: {
         card_id:products[0].id,
         guestCount: guest,
