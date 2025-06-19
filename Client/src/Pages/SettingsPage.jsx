@@ -10,17 +10,8 @@ export default function SettingsPage() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      const response = await axios.post("https://neom-sgf7.onrender.com/logout", {}, {
-        withCredentials: true,
-      });
-
-      console.log(response.data.message);
-      dispatch(userlogout()); // Reset redux user state
-      navigate("/login"); // Redirect to login page
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
+    dispatch(userlogout());
+    navigate("/login");
   };
 
   return (
