@@ -1,5 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 
+// Initial State
 const initialUserState = {
   loading: false,
   error: null,
@@ -41,16 +42,12 @@ export default function userReducer(state = initialUserState, action) {
       return {
         ...state,
         authorized: action.payload.authenticated,
-        birthDate: action.payload.user
-          ? action.payload.user.date_of_birth
-          : null,
-        fullName: action.payload.user ? action.payload.user.name : null,
-        mobileNo: action.payload.user ? action.payload.user.mobile_no : null,
-        ProfilePic: action.payload.user
-          ? action.payload.user.profile_pic
-          : null,
-        email: action.payload.user ? action.payload.user.email_id : null,
-        user_id: action.payload.user ? action.payload.user.user_id : null,
+        birthDate: action.payload.user?.date_of_birth ?? null,
+        fullName: action.payload.user?.name ?? null,
+        mobileNo: action.payload.user?.mobile_no ?? null,
+        ProfilePic: action.payload.user?.profile_pic ?? null,
+        email: action.payload.user?.email_id ?? null,
+        user_id: action.payload.user?.user_id ?? null,
         allCards: action.payload.cardData,
         totalCards: action.payload.cardData,
         scheduledEvents: action.payload.scheduledData,
@@ -62,22 +59,28 @@ export default function userReducer(state = initialUserState, action) {
         serverProfile: action.payload.serverProfileQuestion,
         feedbackEvents: action.payload.feedbackEvents,
       };
+
     case "user/loading":
       return {
         ...state,
         loading: action.payload,
       };
+
     case "user/error":
       return {
         ...state,
         error: action.payload,
       };
 
+    case "user/logout":
+      return initialUserState;
+
     case "user/interestArray":
       return {
         ...state,
         interestArray: action.payload,
       };
+
     case "user/resetFilter":
       return {
         ...state,
@@ -112,6 +115,7 @@ export default function userReducer(state = initialUserState, action) {
         ...state,
         interestArray: action.payload,
       };
+
     case "user/movementFilter":
       return {
         ...state,
@@ -119,6 +123,7 @@ export default function userReducer(state = initialUserState, action) {
         categoryValue: action.payload.categoryValue,
         categoryCheck: action.payload.categoryCheck,
       };
+
     case "user/InputHandle":
       return {
         ...state,
@@ -130,22 +135,18 @@ export default function userReducer(state = initialUserState, action) {
   }
 }
 
-// function provide verification of user and data of user
-
+// Actions
 export function getAllUserData() {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({ type: "user/loading", payload: true });
-
     try {
       const res = await fetch("https://neom-sgf7.onrender.com/verify/user", {
         method: "GET",
         credentials: "include",
       });
       const data = await res.json();
-
       dispatch({ type: "user/data", payload: data });
     } catch (error) {
-      console.error("Error fetching user data:", error);
       dispatch({ type: "user/error", payload: error.message });
     } finally {
       dispatch({ type: "user/loading", payload: false });
@@ -153,89 +154,61 @@ export function getAllUserData() {
   };
 }
 
-// handle favorite card
-
 export const handleFavouriteCard = (card) => async (dispatch, getState) => {
-  const state = getState();
-  const data = { cardId: card.id, userId: state.user.user_id };
-  console.log(data);
+  const { user } = getState();
+  const data = { cardId: card.id, userId: user.user_id };
   const res = await fetch("https://neom-sgf7.onrender.com/card/fav", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   const val = await res.json();
-  if (val.success) {
-    await dispatch(getAllUserData());
-  }
+  if (val.success) await dispatch(getAllUserData());
 };
-
-// handle remove card
 
 export const handleRemoveCard = (card) => async (dispatch, getState) => {
-  const state = getState();
-  const data = { cardId: card.id, userId: state.user.user_id };
-  console.log(data);
+  const { user } = getState();
+  const data = { cardId: card.id, userId: user.user_id };
   const res = await fetch("https://neom-sgf7.onrender.com/card/remove", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   const val = await res.json();
-  if (val.success) {
-    await dispatch(getAllUserData());
-  }
+  if (val.success) await dispatch(getAllUserData());
 };
 
-// handle reserve card
 export const handleReserve =
   (card_id, guestCount) => async (dispatch, getState) => {
-    const state = getState();
+    const { user } = getState();
     const data = {
       cardId: card_id,
-      userId: state.user.user_id,
+      userId: user.user_id,
       seat: guestCount,
     };
-    console.log(data);
     const res = await fetch("https://neom-sgf7.onrender.com/card/reserve", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     const val = await res.json();
-    if (val.success) {
-      await dispatch(getAllUserData());
-    }
+    if (val.success) await dispatch(getAllUserData());
   };
 
-export const HandleProfile = (formData) => async (dispatch, getState) => {
-  console.log("FormData before sending in userslice:");
-  for (let pair of formData.entries()) {
-    console.log(pair[0], pair[1]);
-  }
-
+export const HandleProfile = (formData) => async (dispatch) => {
   const res = await fetch("https://neom-sgf7.onrender.com/card/updateProfile", {
     method: "POST",
     body: formData,
   });
   const val = await res.json();
-  if (val.success) {
-    await dispatch(getAllUserData());
-  }
+  if (val.success) await dispatch(getAllUserData());
 };
 
-export const handleInputChange = (likeArray) => (dispatch, getState) => {
+export const handleInputChange = (likeArray) => (dispatch) => {
   dispatch({ type: "user/InputHandle", payload: likeArray });
 };
 
 export const UserSignIn = (formDataToSend) => {
-  console.log(formDataToSend);
   return async () => {
     try {
       const res = await fetch("https://neom-sgf7.onrender.com/user/signIn", {
@@ -243,19 +216,11 @@ export const UserSignIn = (formDataToSend) => {
         body: formDataToSend,
         credentials: "include",
       });
-
       const responseData = await res.json();
-
-      if (!res.ok) {
-        console.error("Error while signing in:", responseData.message);
-        return;
-      }
-
-      if (responseData.redirectUrl) {
-        window.location.href = responseData.redirectUrl;
-      }
+      if (!res.ok) return console.error("Error signing in:", responseData.message);
+      if (responseData.redirectUrl) window.location.href = responseData.redirectUrl;
     } catch (error) {
-      console.error("Problem while signing in:", error.message);
+      console.error("Sign in error:", error.message);
     }
   };
 };
@@ -265,163 +230,122 @@ export const userlogin = (data) => {
     try {
       const res = await fetch("https://neom-sgf7.onrender.com/user/loginIn", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
         credentials: "include",
       });
-
       const responseData = await res.json();
-
-      if (!res.ok) {
-        console.error("Error while signing in:", responseData.message);
-        return;
-      }
-
-      if (responseData.redirectUrl) {
-        window.location.href = responseData.redirectUrl;
-      }
+      if (!res.ok) return console.error("Login error:", responseData.message);
+      if (responseData.redirectUrl) window.location.href = responseData.redirectUrl;
     } catch (error) {
-      console.error("Problem while logining in:", error.message);
+      console.error("Login failed:", error.message);
     }
   };
 };
 
-const stripePromise = loadStripe(
-  "pk_test_51QzDEW2eBk2Ytfec9qDwRxqP8kahT49DURiIC66jGTmTqJjm8wjVuKyo5AJgkHAek55zPl2X0VkQHWAZBM5ZKNDP00qHUlKS20"
-);
+// ✅ Logout action
+export const userlogout = () => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch("https://neom-sgf7.onrender.com/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (res.ok) {
+        dispatch({ type: "user/logout" });
+        console.log("Logout successful:", data.message);
+      } else {
+        console.error("Logout error:", data.message);
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+};
+
+const stripePromise = loadStripe("pk_test_51QzDEW2eBk2Ytfec9qDwRxqP8kahT49DURiIC66jGTmTqJjm8wjVuKyo5AJgkHAek55zPl2X0VkQHWAZBM5ZKNDP00qHUlKS20");
 
 export const stripePayment = (id, name, image, amount, seat) => {
   return async () => {
     const stripe = await stripePromise;
-
     const body = {
-      products: [
-        {
-          id: id,
-          name: name,
-          image_main: image,
-        },
-      ],
+      products: [{ id, name, image_main: image }],
       pay: amount,
       guest: seat,
     };
-
     const res = await fetch("https://neom-sgf7.onrender.com/payment/check", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-
-    if (!res.ok) {
-      throw new Error("Failed to create Stripe session");
-    }
-
+    if (!res.ok) throw new Error("Failed to create Stripe session");
     const session = await res.json();
-
-    if (!session.id) {
-      throw new Error("Invalid session ID received");
-    }
-
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      console.log("Error during payment:", result.error);
-      return;
-    }
+    if (!session.id) throw new Error("Invalid session ID");
+    const result = await stripe.redirectToCheckout({ sessionId: session.id });
+    if (result.error) console.log("Payment error:", result.error);
   };
 };
 
-export const feedbackData =
-  (card_id, stars, feedback) => async (dispatch, getState) => {
-    const state = getState();
-    const data = {
-      cardId: card_id,
-      rating: stars,
-      user_feedback: feedback,
-      user_name: state.user.fullName,
-      userId: state.user.user_id,
-    };
-    console.log(data);
-    const res = await fetch("https://neom-sgf7.onrender.com/card/feedback", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    const val = await res.json();
-    if (val.success) {
-      await dispatch(getAllUserData());
-    }
+export const feedbackData = (card_id, stars, feedback) => async (dispatch, getState) => {
+  const { user } = getState();
+  const data = {
+    cardId: card_id,
+    rating: stars,
+    user_feedback: feedback,
+    user_name: user.fullName,
+    userId: user.user_id,
   };
-
-export const cancelEvent = (cardId) => async (dispatch, getState) => {
-  const state = getState();
-  const userId = state.user.user_id;
-  const data = { user_id: userId, card_id: cardId };
-  const res = await fetch("https://neom-sgf7.onrender.com/card/cancel", {
+  const res = await fetch("https://neom-sgf7.onrender.com/card/feedback", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   const val = await res.json();
-  if (val.success) {
-    await dispatch(getAllUserData());
-  }
+  if (val.success) await dispatch(getAllUserData());
+};
+
+export const cancelEvent = (cardId) => async (dispatch, getState) => {
+  const { user } = getState();
+  const data = { user_id: user.user_id, card_id: cardId };
+  const res = await fetch("https://neom-sgf7.onrender.com/card/cancel", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const val = await res.json();
+  if (val.success) await dispatch(getAllUserData());
 };
 
 export const eventFilter = (type, val) => (dispatch, getState) => {
-  const state = getState();
+  const { user } = getState();
+  const allCards = user.allCards || [];
+  const categoryCheck = user.categoryCheck;
+  const categoryValue = user.categoryValue;
 
-  const allCards = state.user.allCards || [];
-  const categoryCheck = state.user.categoryCheck;
-  const categoryValue = state.user.categoryValue;
-
-  console.log(categoryCheck, categoryValue);
-  // console.log(allCards[0].start_date.slice(0,11));
-
-  let payload;
-  let filterCards;
-
+  let filterCards = allCards;
   if (
     categoryCheck === type &&
     (categoryValue === val || val === null || val === " ")
   ) {
-    payload = { cards: allCards, categoryCheck: null, categoryValue: null };
+    dispatch({
+      type: "user/movementFilter",
+      payload: { cards: allCards, categoryCheck: null, categoryValue: null },
+    });
   } else {
-    if (type === "walking") {
-      filterCards = allCards.filter((card) => card.walking === val);
-    }
-    if (type === "drive") {
-      filterCards = allCards.filter((card) => card.drive === val);
-    }
-    if (type === "event") {
-      filterCards = allCards.filter((card) => card.category === val);
-    }
-    if (type === "date") {
-      console.log("type date runs");
-      filterCards = allCards.filter(
-        (card) => card.start_date.slice(0, 10) === val
-      );
-      console.log("datefilter", filterCards);
-    }
-    if (type === "city") {
-      filterCards = allCards.filter((card) => card.city === val.split(",")[0]);
-    }
-    payload = { cards: filterCards, categoryCheck: type, categoryValue: val };
-    console.log(payload);
-  }
+    if (type === "walking") filterCards = allCards.filter((card) => card.walking === val);
+    if (type === "drive") filterCards = allCards.filter((card) => card.drive === val);
+    if (type === "event") filterCards = allCards.filter((card) => card.category === val);
+    if (type === "date") filterCards = allCards.filter((card) => card.start_date.slice(0, 10) === val);
+    if (type === "city") filterCards = allCards.filter((card) => card.city === val.split(",")[0]);
 
-  dispatch({ type: "user/movementFilter", payload });
+    dispatch({
+      type: "user/movementFilter",
+      payload: { cards: filterCards, categoryCheck: type, categoryValue: val },
+    });
+  }
 };
 
-export const interestedFunction = (array) => (dispatch, getState) => {
-  console.log("userslice likearray", array);
+export const interestedFunction = (array) => (dispatch) => {
   dispatch({ type: "user/interestArray", payload: array });
 };

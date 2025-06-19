@@ -11,6 +11,7 @@ const signInRoutes=require('./Routes/SignInRoute/SignIn.js');
 const loginInRoutes=require('./Routes/SignInRoute/loginIn.js');
 const cardRoutes=require('./Routes/CardRoutes/cardRoutes.js');
 const stripeRoute=require('./Routes/PaymentRoute/StripeRoute.js');
+const logoutRoutes=require('./Routes/SignInRoute/logout.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,6 +31,7 @@ app.use('/user',signInRoutes);
 app.use('/user',loginInRoutes);
 app.use('/card',cardRoutes);
 app.use('/payment',stripeRoute);
+app.use('/logout',logoutRoutes);
 app.use(express.static(path.join(__dirname,"../Client/dist")))
 
 
