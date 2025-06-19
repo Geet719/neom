@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import Header from "../Components/Header/Header";
+import { useSelector } from "react-redux";
 import Footer from "../Components/Footer/Footer";
+import Header from "../Components/Header/Header";
+import SettingCard from "../Components/SettingComponent/SettingCard";
+import serverData from "../assets/Dummy_Data/serverData"
 import { useDispatch, useSelector } from "react-redux";
-import { userlogout } from "../Features/User/UserSlice"; // adjust path if needed
+import { userlogout } from "../Features/User/UserSlice"; 
 
 export default function SettingsPage() {
   const userDetails = useSelector((store) => store.user);
