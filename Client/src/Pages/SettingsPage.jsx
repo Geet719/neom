@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
+import Header from "../Components/Header/Header";
+import Footer from "../Components/Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { userlogout } from "../Features/User/UserSlice"; // adjust path if needed
 
