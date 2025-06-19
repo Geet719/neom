@@ -71,6 +71,7 @@ function App() {
             <Route path="success" element={<PaymentSuccessful />} />
             <Route path="fail" element={<PaymentFailed />} />
             <Route path="form" element={<ClientForm />} />
+            <Route path="login" element={<LoginPage/>} />
           </Routes>
         </div>
       </BrowserRouter>
