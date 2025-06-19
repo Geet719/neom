@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import SettingCard from "../Components/SettingComponent/SettingCard";
