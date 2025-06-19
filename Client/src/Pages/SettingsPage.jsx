@@ -15,7 +15,7 @@ export default function SettingsPage() {
 
   const handleLogout = async () => {
     dispatch(userlogout());
-    navigate("/login");
+    navigate("/SignIn");
   };
 
   return (
