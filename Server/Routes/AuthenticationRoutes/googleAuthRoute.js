@@ -8,6 +8,7 @@ const {
 const router = express.Router();
 console.log("this is google router file");
 router.get("/google", googleAuthController);
-router.get("/google/callback",upload.single("profilePic"),googleAuthControllerCallback);
+router.get("/google/callback",googleAuthControllerCallback); 
+// ,upload.single("profilePic")
 
 module.exports = router;
